@@ -111,8 +111,10 @@ else:
             print("[-]No results found\n")
         elif captcha:
             print("[-]Captcha triggered. Please try after some time.\n")
+            print("sleep 10s")
+            time.sleep(10)
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
             f.write('<h2>Possible Directory listing</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
@@ -123,7 +125,7 @@ else:
         if notfound1:
             print("[-]No results found\n")
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]baidu Registering data into the file.\033[0m\n")
             f.write('<h2>Possible Directory listing</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
@@ -134,101 +136,7 @@ else:
 
         print("[#]Checking for Configuration files exposed")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:xml+|+ext:conf+|+ext:cnf+|+ext:reg+|+ext:inf+|+ext:rdp+|+ext:cfg+|+ext:txt+|+ext:ora+|+ext:ini&hl=en'
-        # requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+ext:xml+|+ext:conf+|+ext:cnf+|+ext:reg+|+ext:inf+|+ext:rdp+|+ext:cfg+|+ext:txt+|+ext:ora+|+ext:ini&hl=en'
-        response = requests.get(requesturl, headers=headers, timeout=5)
-        # response1 = requests.get(requesturl1, headers=headers, timeout=5)
-        notfound = re.search('\s-\sdid not match any documents.', response.text)
-        #  notfound1 = re.search('抱歉没有找到', response1.text)
-        captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
-        if notfound:
-            print("[-]No results found\n")
-        elif captcha:
-            print("[-]Captcha triggered. Please try after some time.\n")
-        else:
-            print("[+]Registering data into the file.\n")
-            f.write('<h2>Possible Configuration files</h2>')
-            f.write('<a href="' + requesturl + '">Click Here</a>')
-            f.write("<br>")
-            f1.write(requesturl1 + "\n")
-
-            f1.flush()
-
-        # if notfound1:
-        #     print("[-]No results found\n")
-        # else:
-        #     print("[+]Registering data into the file.\n")
-        #     f.write('<h2>Possible Configuration files</h2>')
-        #     f.write('<a href="' + requesturl1 + '">Click Here</a>')
-        #     f.write("<br>")
-
-        time.sleep(5)
-
-        print("[#]Checking for Database files exposed")
-        requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:sql+|+ext:dbf+|+ext:mdb&hl=en'
-        # requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+ext:sql+|+ext:dbf+|+ext:mdb&hl=en'
-        response = requests.get(requesturl, headers=headers, timeout=5)
-        # response1 = requests.get(requesturl1, headers=headers, timeout=5)
-        notfound = re.search('\s-\sdid not match any documents.', response.text)
-        # notfound1 = re.search('抱歉没有找到', response1.text)
-        captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
-        if notfound:
-            print("[-]No results found\n")
-        elif captcha:
-            print("[-]Captcha triggered. Please try after some time.\n")
-        else:
-            print("[+]Registering data into the file.\n")
-            f.write('<h2>Possible Database files</h2>')
-            f.write('<a href="' + requesturl + '">Click Here</a>')
-            f.write("<br>")
-            f1.write(requesturl1 + "\n")
-
-            f1.flush()
-
-        #
-        # if notfound1:
-        #     print("[-]No results found\n")
-        # else:
-        #     print("[+]Registering data into the file.\n")
-        #     f.write('<h2>Possible Database files</h2>')
-        #     f.write('<a href="' + requesturl1 + '">Click Here</a>')
-        #     f.write("<br>")
-
-        time.sleep(5)
-
-        print("[#]Checking for Log files exposed")
-        requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:log&hl=en'
-        # requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+ext:log&hl=en'
-        response = requests.get(requesturl, headers=headers, timeout=5)
-        # response1 = requests.get(requesturl1, headers=headers, timeout=5)
-        notfound = re.search('\s-\sdid not match any documents.', response.text)
-        # notfound1 = re.search('抱歉没有找到', response1.text)
-        captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
-        if notfound:
-            print("[-]No results found\n")
-        elif captcha:
-            print("[-]Captcha triggered. Please try after some time.\n")
-        else:
-            print("[+]Registering data into the file.\n")
-            f.write('<h2>Possible Log files</h2>')
-            f.write('<a href="' + requesturl + '">Click Here</a>')
-            f.write("<br>")
-            f1.write(requesturl1 + "\n")
-
-            f1.flush()
-
-        # if notfound1:
-        #     print("[-]No results found\n")
-        # else:
-        #     print("[+]Registering data into the file.\n")
-        #     f.write('<h2>Possible Log files</h2>')
-        #     f.write('<a href="' + requesturl1 + '">Click Here</a>')
-        #     f.write("<br>")
-
-        time.sleep(5)
-
-        print("[#]Checking for 敏感文件")
-        requesturl = 'https://www.google.com/search?q=site:' + url + '+filetype:pdf+|+filetype:doc+|+filetype:xls+|+filetype:txt+|+filetype:log+|+filetype:sql+|+filetype:conf&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:pdf+|+filetype:doc+|+filetype:xls+|+filetype:txt+|+filetype:log+|+filetype:sql+|+filetype:conf'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:conf'
         response = requests.get(requesturl, headers=headers, timeout=5)
         response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
@@ -238,9 +146,77 @@ else:
             print("[-]No results found\n")
         elif captcha:
             print("[-]Captcha triggered. Please try after some time.\n")
+            print("sleep 10s")
+            time.sleep(10)
         else:
-            print("[+]Registering data into the file.\n")
-            f.write('<h2>Possible 敏感文件 files</h2>')
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
+            f.write('<h2>Possible Configuration files</h2>')
+            f.write('<a href="' + requesturl + '">Click Here</a>')
+            f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
+
+        if notfound1:
+            print("[-]No results found\n")
+        else:
+            print("\033[1;32m[+]baidu Registering data into the file.\033[0m\n")
+            f.write('<h2>Possible Configuration files</h2>')
+            f.write('<a href="' + requesturl1 + '">Click Here</a>')
+            f.write("<br>")
+
+        time.sleep(5)
+
+        print("[#]Checking for Database files exposed")
+        requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:sql+|+ext:dbf+|+ext:mdb&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:sql'
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        response1 = requests.get(requesturl1, headers=headers, timeout=5)
+        notfound = re.search('\s-\sdid not match any documents.', response.text)
+        notfound1 = re.search('抱歉没有找到', str(response1.content.decode(response1.encoding).encode('utf-8')))
+        captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
+        if notfound:
+            print("[-]No results found\n")
+        elif captcha:
+            print("[-]Captcha triggered. Please try after some time.\n")
+            print("sleep 10s")
+            time.sleep(10)
+        else:
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
+            f.write('<h2>Possible Database files</h2>')
+            f.write('<a href="' + requesturl + '">Click Here</a>')
+            f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
+
+        if notfound1:
+            print("[-]No results found\n")
+        else:
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
+            f.write('<h2>Possible Database files</h2>')
+            f.write('<a href="' + requesturl1 + '">Click Here</a>')
+            f.write("<br>")
+
+        time.sleep(5)
+
+        print("[#]Checking for Log files exposed")
+        requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:log&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:log'
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        response1 = requests.get(requesturl1, headers=headers, timeout=5)
+        notfound = re.search('\s-\sdid not match any documents.', response.text)
+        notfound1 = re.search('抱歉没有找到', str(response1.content.decode(response1.encoding).encode('utf-8')))
+        captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
+        if notfound:
+            print("[-]No results found\n")
+        elif captcha:
+            print("[-]Captcha triggered. Please try after some time.\n")
+            print("sleep 10s")
+            time.sleep(10)
+        else:
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
+            f.write('<h2>Possible Log files</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
             f1.write(requesturl1 + "\n")
@@ -251,6 +227,39 @@ else:
             print("[-]No results found\n")
         else:
             print("[+]Registering data into the file.\n")
+            f.write('<h2>Possible Log files</h2>')
+            f.write('<a href="' + requesturl1 + '">Click Here</a>')
+            f.write("<br>")
+
+        time.sleep(5)
+
+        print("[#]Checking for 敏感文件")
+        requesturl = 'https://www.google.com/search?q=site:' + url + '+filetype:pdf+|+filetype:doc+|+filetype:xls+|+filetype:txt+|+filetype:log+|+filetype:sql+|+filetype:conf&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:xls'
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        response1 = requests.get(requesturl1, headers=headers, timeout=5)
+        notfound = re.search('\s-\sdid not match any documents.', response.text)
+        notfound1 = re.search('抱歉没有找到', str(response1.content.decode(response1.encoding).encode('utf-8')))
+        captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
+        if notfound:
+            print("[-]No results found\n")
+        elif captcha:
+            print("[-]Captcha triggered. Please try after some time.\n")
+            print("sleep 10s")
+            time.sleep(10)
+        else:
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
+            f.write('<h2>Possible 敏感文件 files</h2>')
+            f.write('<a href="' + requesturl + '">Click Here</a>')
+            f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
+
+        if notfound1:
+            print("[-]No results found\n")
+        else:
+            print("\033[1;32m[+]baidu Registering data into the file.\033[0m\n")
             f.write('<h2>Possible 敏感文件 files</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
@@ -261,8 +270,8 @@ else:
         time.sleep(5)
 
         print("[#]Checking for 测试")
-        requesturl = 'https://www.google.com/search?q=site:' + url + '+inurl:test+|+inurl:testceshi+|+intitle:测试&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+inurl:test+|+inurl:ceshi+|+intitle:测试'
+        requesturl = 'https://www.google.com/search?q=site:' + url + '+inurl:test+|+inurl:test+|+inurl:ceshi+|+intitle:测试&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+inurl:test'
         response = requests.get(requesturl, headers=headers, timeout=5)
         response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
@@ -272,8 +281,10 @@ else:
             print("[-]No results found\n")
         elif captcha:
             print("[-]Captcha triggered. Please try after some time.\n")
+            print("sleep 10s")
+            time.sleep(10)
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
             f.write('<h2>Possible test files</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
@@ -284,7 +295,7 @@ else:
         if notfound1:
             print("[-]No results found\n")
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]baidu Registering data into the file.\033[0m\n")
             f.write('<h2>Possible test files</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
@@ -296,39 +307,7 @@ else:
 
         print("[#]Checking for Backup and old files")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:bkf+|+ext:bkp+|+ext:bak+|+ext:old+|+ext:backup&hl=en'
-        # requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+ext:bkf+|+ext:bkp+|+ext:bak+|+ext:old+|+ext:backup&hl=en'
-        response = requests.get(requesturl, headers=headers, timeout=5)
-        # response1 = requests.get(requesturl1, headers=headers, timeout=5)
-        notfound = re.search('\s-\sdid not match any documents.', response.text)
-        # notfound1 = re.search('抱歉没有找到', response1.text)
-        captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
-        if notfound:
-            print("[-]No results found\n")
-        elif captcha:
-            print("[-]Captcha triggered. Please try after some time.\n")
-        else:
-            print("[+]Registering data into the file.\n")
-            f.write('<h2>Possible Backup and Old files</h2>')
-            f.write('<a href="' + requesturl + '">Click Here</a>')
-            f.write("<br>")
-            f1.write(requesturl1 + "\n")
-
-            f1.flush()
-
-        #
-        # if notfound1:
-        #     print("[-]No results found\n")
-        # else:
-        #     print("[+]Registering data into the file.\n")
-        #     f.write('<h2>Possible Backup and Old files</h2>')
-        #     f.write('<a href="' + requesturl1 + '">Click Here</a>')
-        #     f.write("<br>")
-
-        time.sleep(5)
-
-        print("[#]Checking for Login pages")
-        requesturl = 'https://www.google.com/search?q=site:' + url + '+inurl:login+|+inurl:admin+|+inurl:system+|+inurl:guanli+|+inurl:denglu&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+inurl:login+|+inurl:admin+|+inurl:system+|+inurl:guanli+|+inurl:denglu'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:bak'
         response = requests.get(requesturl, headers=headers, timeout=5)
         response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
@@ -338,8 +317,43 @@ else:
             print("[-]No results found\n")
         elif captcha:
             print("[-]Captcha triggered. Please try after some time.\n")
+            print("sleep 10s")
+            time.sleep(10)
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
+            f.write('<h2>Possible Backup and Old files</h2>')
+            f.write('<a href="' + requesturl + '">Click Here</a>')
+            f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
+
+        if notfound1:
+            print("[-]No results found\n")
+        else:
+            print("\033[1;32m[+]baidu Registering data into the file.\033[0m\n")
+            f.write('<h2>Possible Backup and Old files</h2>')
+            f.write('<a href="' + requesturl1 + '">Click Here</a>')
+            f.write("<br>")
+
+        time.sleep(5)
+
+        print("[#]Checking for Login pages")
+        requesturl = 'https://www.google.com/search?q=site:' + url + '+inurl:login+|+inurl:admin+|+inurl:system+|+inurl:guanli+|+inurl:denglu&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+inurl:login'
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        response1 = requests.get(requesturl1, headers=headers, timeout=5)
+        notfound = re.search('\s-\sdid not match any documents.', response.text)
+        notfound1 = re.search('抱歉没有找到', str(response1.content.decode(response1.encoding).encode('utf-8')))
+        captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
+        if notfound:
+            print("[-]No results found\n")
+        elif captcha:
+            print("[-]Captcha triggered. Please try after some time.\n")
+            print("sleep 10s")
+            time.sleep(10)
+        else:
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
             f.write('<h2>Possible Login pages</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
@@ -350,7 +364,7 @@ else:
         if notfound1:
             print("[-]No results found\n")
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]baidu Registering data into the file.\033[0m\n")
             f.write('<h2>Possible Login pages</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
@@ -362,7 +376,7 @@ else:
 
         print("[#]Checking for SQL errors")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+intext:%22sql+syntax+near%22+|+intext:%22syntax+error+has+occurred%22+|+intext:%22incorrect+syntax+near%22+|+intext:%22unexpected+end+of+SQL+command%22+|+intext:%22Warning:+mysql_connect()%22+|+intext:%22Warning:+mysql_query()%22+|+intext:%22Warning:+pg_connect()%22&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+intext:%22sql+syntax+near%22+|+intext:%22syntax+error+has+occurred%22'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+intext:%22sql+syntax+near%22'
         response = requests.get(requesturl, headers=headers, timeout=5)
         response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
@@ -372,8 +386,10 @@ else:
             print("[-]No results found\n")
         elif captcha:
             print("[-]Captcha triggered. Please try after some time.\n")
+            print("sleep 10s")
+            time.sleep(10)
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
             f.write('<h2>Possible SQL Errors</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
@@ -384,7 +400,7 @@ else:
         if notfound1:
             print("[-]No results found\n")
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]baidu Registering data into the file.\033[0m\n")
             f.write('<h2>Possible SQL Errors</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
@@ -396,7 +412,7 @@ else:
 
         print("[#]Checking for Publicly exposed documents ")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:doc+|+ext:docx+|+ext:odt+|+ext:pdf+|+ext:rtf+|+ext:sxw+|+ext:psw+|+ext:ppt+|+ext:pptx+|+ext:pps+|+ext:csv&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:doc+|+filetype:docx+|+filetype:pdf+|+filetype:ppt+|+filetype:pptx+|+filetype:csv'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:doc'
         response = requests.get(requesturl, headers=headers, timeout=5)
         response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
@@ -406,24 +422,24 @@ else:
             print("[-]No results found\n")
         elif captcha:
             print("[-]Captcha triggered. Please try after some time.\n")
+            print("sleep 10s")
+            time.sleep(10)
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
             f.write('<h2>Possible Publicly Exposed Documents</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
             f1.write(requesturl1 + "\n")
-
             f1.flush()
 
         if notfound1:
             print("[-]No results found\n")
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]baidu Registering data into the file.\033[0m\n")
             f.write('<h2>Possible Publicly Exposed Documents</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
             f1.write(requesturl1 + "\n")
-
             f1.flush()
 
         time.sleep(5)
@@ -441,8 +457,10 @@ else:
             print("[-]No results found\n")
         elif captcha:
             print("[-]Captcha triggered. Please try after some time.\n")
+            print("sleep 10s")
+            time.sleep(10)
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]google Registering data into the file.\033[0m\n")
             f.write('<h2>phpinfo()</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
@@ -455,7 +473,7 @@ else:
         if notfound1:
             print("[-]No results found\n")
         else:
-            print("[+]Registering data into the file.\n")
+            print("\033[1;32m[+]baidu Registering data into the file.\033[0m\n")
             f.write('<h2>phpinfo()</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
