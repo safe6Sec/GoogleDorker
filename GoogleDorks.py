@@ -39,7 +39,7 @@ if options.manual:
     def manual():
         global f
         print("[+]Registering data into the file.\n")
-        time.sleep(2)
+        time.sleep(5)
         f.write("<h2>Manual mode - Check the links manually.</h2>")
         f.write("<br>")
         f.write('<h2>Possible Directory listing</h2>')
@@ -96,8 +96,8 @@ else:
 
         requesturl = 'https://www.google.com/search?q=site:' + url + '+intitle:index.of&hl=en'
         requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+intitle:index.of'
-        response = requests.get(requesturl)
-        response1 = requests.get(requesturl1, headers=headers)
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        response1 = requests.get(requesturl1, headers=headers, timeout=5)
         # print(requesturl1)
         # print(response1.text)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
@@ -121,13 +121,13 @@ else:
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
 
-        time.sleep(2)
+        time.sleep(5)
 
         print("[#]Checking for Configuration files exposed")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:xml+|+ext:conf+|+ext:cnf+|+ext:reg+|+ext:inf+|+ext:rdp+|+ext:cfg+|+ext:txt+|+ext:ora+|+ext:ini&hl=en'
         # requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+ext:xml+|+ext:conf+|+ext:cnf+|+ext:reg+|+ext:inf+|+ext:rdp+|+ext:cfg+|+ext:txt+|+ext:ora+|+ext:ini&hl=en'
-        response = requests.get(requesturl)
-        # response1 = requests.get(requesturl1, headers=headers)
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        # response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
         #  notfound1 = re.search('抱歉没有找到', response1.text)
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
@@ -148,13 +148,13 @@ else:
         #     f.write('<a href="' + requesturl1 + '">Click Here</a>')
         #     f.write("<br>")
 
-        time.sleep(2)
+        time.sleep(5)
 
         print("[#]Checking for Database files exposed")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:sql+|+ext:dbf+|+ext:mdb&hl=en'
         # requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+ext:sql+|+ext:dbf+|+ext:mdb&hl=en'
-        response = requests.get(requesturl)
-        # response1 = requests.get(requesturl1, headers=headers)
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        # response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
         # notfound1 = re.search('抱歉没有找到', response1.text)
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
@@ -176,13 +176,13 @@ else:
         #     f.write('<a href="' + requesturl1 + '">Click Here</a>')
         #     f.write("<br>")
 
-        time.sleep(2)
+        time.sleep(5)
 
         print("[#]Checking for Log files exposed")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:log&hl=en'
         # requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+ext:log&hl=en'
-        response = requests.get(requesturl)
-        # response1 = requests.get(requesturl1, headers=headers)
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        # response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
         # notfound1 = re.search('抱歉没有找到', response1.text)
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
@@ -204,13 +204,13 @@ else:
         #     f.write('<a href="' + requesturl1 + '">Click Here</a>')
         #     f.write("<br>")
 
-        time.sleep(2)
+        time.sleep(5)
 
         print("[#]Checking for 敏感文件")
-        requesturl = 'https://www.google.com/search?q=site:' + url + '+filetype:pdf/doc/xls/txt/log/sql/conf&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:pdf/doc/xls/txt/log/sql/conf'
-        response = requests.get(requesturl)
-        response1 = requests.get(requesturl1, headers=headers)
+        requesturl = 'https://www.google.com/search?q=site:' + url + '+filetype:pdf+|+filetype:doc+|+filetype:xls+|+filetype:txt+|+filetype:log+|+filetype:sql+|+filetype:conf&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:pdf+|+filetype:doc+|+filetype:xls+|+filetype:txt+|+filetype:log+|+filetype:sql+|+filetype:conf'
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
         notfound1 = re.search('抱歉没有找到', response1.text)
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
@@ -232,13 +232,13 @@ else:
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
 
-        time.sleep(2)
+        time.sleep(5)
 
         print("[#]Checking for 测试")
-        requesturl = 'https://www.google.com/search?q=site:' + url + '+inurl:test/ceshi|intitle:测试&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+inurl:test/ceshi|intitle:测试'
-        response = requests.get(requesturl)
-        response1 = requests.get(requesturl1, headers=headers)
+        requesturl = 'https://www.google.com/search?q=site:' + url + '+inurl:test+|+inurl:testceshi+|+intitle:测试&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+inurl:test+|+inurl:ceshi+|+intitle:测试'
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
         notfound1 = re.search('抱歉没有找到', response1.text)
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
@@ -260,13 +260,13 @@ else:
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
 
-        time.sleep(2)
+        time.sleep(5)
 
         print("[#]Checking for Backup and old files")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:bkf+|+ext:bkp+|+ext:bak+|+ext:old+|+ext:backup&hl=en'
         # requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+ext:bkf+|+ext:bkp+|+ext:bak+|+ext:old+|+ext:backup&hl=en'
-        response = requests.get(requesturl)
-        # response1 = requests.get(requesturl1, headers=headers)
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        # response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
         # notfound1 = re.search('抱歉没有找到', response1.text)
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
@@ -288,13 +288,13 @@ else:
         #     f.write('<a href="' + requesturl1 + '">Click Here</a>')
         #     f.write("<br>")
 
-        time.sleep(2)
+        time.sleep(5)
 
         print("[#]Checking for Login pages")
-        requesturl = 'https://www.google.com/search?q=site:' + url + '+inurl:login/admin/system/guanli/denglu&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+inurl:login/admin/system/guanli/denglu&hl=en'
-        response = requests.get(requesturl)
-        response1 = requests.get(requesturl1, headers=headers)
+        requesturl = 'https://www.google.com/search?q=site:' + url + '+inurl:login+|+admin+|+system+|+guanli+|+denglu+|+管理+|+登录+|+系统&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+inurl:login+|+admin+|+system+|+guanli+|+denglu+|+管理+|+登录+|+系统'
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
         notfound1 = re.search('抱歉没有找到', response1.text)
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
@@ -316,13 +316,13 @@ else:
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
 
-        time.sleep(2)
+        time.sleep(5)
 
         print("[#]Checking for SQL errors")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+intext:%22sql+syntax+near%22+|+intext:%22syntax+error+has+occurred%22+|+intext:%22incorrect+syntax+near%22+|+intext:%22unexpected+end+of+SQL+command%22+|+intext:%22Warning:+mysql_connect()%22+|+intext:%22Warning:+mysql_query()%22+|+intext:%22Warning:+pg_connect()%22&hl=en'
         requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+intext:%22sql+syntax+near%22+|+intext:%22syntax+error+has+occurred%22'
-        response = requests.get(requesturl)
-        response1 = requests.get(requesturl1, headers=headers)
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
         notfound1 = re.search('抱歉没有找到', response1.text)
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
@@ -344,13 +344,13 @@ else:
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
 
-        time.sleep(2)
+        time.sleep(5)
 
         print("[#]Checking for Publicly exposed documents ")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:doc+|+ext:docx+|+ext:odt+|+ext:pdf+|+ext:rtf+|+ext:sxw+|+ext:psw+|+ext:ppt+|+ext:pptx+|+ext:pps+|+ext:csv&hl=en'
         requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:doc+|+filetype:docx+|+filetype:pdf+|+filetype:ppt+|+filetype:pptx+|+filetype:csv'
-        response = requests.get(requesturl)
-        response1 = requests.get(requesturl1, headers=headers)
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
         notfound1 = re.search('抱歉没有找到', response1.text)
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
@@ -372,14 +372,14 @@ else:
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
 
-        time.sleep(2)
+        time.sleep(5)
 
         print("[#]Checking for phpinfo() ")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:php+intitle:phpinfo+%22published+by+the+PHP+Group%22&hl=en'
         requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+intitle:phpinfo+%22published+by+the+PHP+Group%22'
 
-        response = requests.get(requesturl)
-        response1 = requests.get(requesturl1, headers=headers)
+        response = requests.get(requesturl, headers=headers, timeout=5)
+        response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
         notfound1 = re.search('抱歉没有找到', response1.text)
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
