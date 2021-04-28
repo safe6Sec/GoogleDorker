@@ -1,4 +1,6 @@
 #!usr/bin/env python3
+import os
+import sys
 
 import requests
 import re
@@ -23,6 +25,7 @@ print("\n\n")
 subprocess.call(["chmod", "777", url + ".html"])
 subprocess.call(["rm", url + ".html"])
 subprocess.call(["clear"])
+os.system("rm " + url + ".*")
 print("                        ______                       _         _____                  _                   ")
 print("                       / _____)                     | |       (____ \                | |                  ")
 print("                      | /  ___   ___    ___    ____ | |  ____  _   \ \   ___    ____ | |  _   ____   ____ ")
@@ -32,6 +35,7 @@ print("                       \_____/  \___/  \___/  \_|| ||_| \____)|_____/   \
 print("                                             (_____|                                      By: safe6Sec ")
 print("\n\n")
 f = open(str(url) + ".html", "at")
+f1 = open(str(url) + ".txt", "at")
 f.write(
     '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"> <title>Results from GoogleDorker by nerrorsec</title> </head> <body><br>')
 
@@ -101,7 +105,7 @@ else:
         # print(requesturl1)
         # print(response1.text)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
-        notfound1 = re.search('抱歉没有找到', response1.text)
+        notfound1 = re.search('抱歉没有找到', str(response1.content.decode(response1.encoding).encode('utf-8')))
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
         if notfound:
             print("[-]No results found\n")
@@ -112,6 +116,9 @@ else:
             f.write('<h2>Possible Directory listing</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         if notfound1:
             print("[-]No results found\n")
@@ -120,6 +127,8 @@ else:
             f.write('<h2>Possible Directory listing</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+            f1.flush()
 
         time.sleep(5)
 
@@ -140,6 +149,10 @@ else:
             f.write('<h2>Possible Configuration files</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
+
         # if notfound1:
         #     print("[-]No results found\n")
         # else:
@@ -167,6 +180,10 @@ else:
             f.write('<h2>Possible Database files</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
+
         #
         # if notfound1:
         #     print("[-]No results found\n")
@@ -195,6 +212,9 @@ else:
             f.write('<h2>Possible Log files</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         # if notfound1:
         #     print("[-]No results found\n")
@@ -212,7 +232,7 @@ else:
         response = requests.get(requesturl, headers=headers, timeout=5)
         response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
-        notfound1 = re.search('抱歉没有找到', response1.text)
+        notfound1 = re.search('抱歉没有找到', str(response1.content.decode(response1.encoding).encode('utf-8')))
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
         if notfound:
             print("[-]No results found\n")
@@ -223,6 +243,9 @@ else:
             f.write('<h2>Possible 敏感文件 files</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         if notfound1:
             print("[-]No results found\n")
@@ -231,6 +254,9 @@ else:
             f.write('<h2>Possible 敏感文件 files</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         time.sleep(5)
 
@@ -240,7 +266,7 @@ else:
         response = requests.get(requesturl, headers=headers, timeout=5)
         response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
-        notfound1 = re.search('抱歉没有找到', response1.text)
+        notfound1 = re.search('抱歉没有找到', str(response1.content.decode(response1.encoding).encode('utf-8')))
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
         if notfound:
             print("[-]No results found\n")
@@ -251,6 +277,9 @@ else:
             f.write('<h2>Possible test files</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         if notfound1:
             print("[-]No results found\n")
@@ -259,6 +288,9 @@ else:
             f.write('<h2>Possible test files</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         time.sleep(5)
 
@@ -279,6 +311,10 @@ else:
             f.write('<h2>Possible Backup and Old files</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
+
         #
         # if notfound1:
         #     print("[-]No results found\n")
@@ -291,12 +327,12 @@ else:
         time.sleep(5)
 
         print("[#]Checking for Login pages")
-        requesturl = 'https://www.google.com/search?q=site:' + url + '+inurl:login+|+admin+|+system+|+guanli+|+denglu+|+管理+|+登录+|+系统&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+inurl:login+|+admin+|+system+|+guanli+|+denglu+|+管理+|+登录+|+系统'
+        requesturl = 'https://www.google.com/search?q=site:' + url + '+inurl:login+|+inurl:admin+|+inurl:system+|+inurl:guanli+|+inurl:denglu&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+inurl:login+|+inurl:admin+|+inurl:system+|+inurl:guanli+|+inurl:denglu'
         response = requests.get(requesturl, headers=headers, timeout=5)
         response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
-        notfound1 = re.search('抱歉没有找到', response1.text)
+        notfound1 = re.search('抱歉没有找到', str(response1.content.decode(response1.encoding).encode('utf-8')))
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
         if notfound:
             print("[-]No results found\n")
@@ -307,6 +343,9 @@ else:
             f.write('<h2>Possible Login pages</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         if notfound1:
             print("[-]No results found\n")
@@ -315,6 +354,9 @@ else:
             f.write('<h2>Possible Login pages</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         time.sleep(5)
 
@@ -324,7 +366,7 @@ else:
         response = requests.get(requesturl, headers=headers, timeout=5)
         response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
-        notfound1 = re.search('抱歉没有找到', response1.text)
+        notfound1 = re.search('抱歉没有找到', str(response1.content.decode(response1.encoding).encode('utf-8')))
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
         if notfound:
             print("[-]No results found\n")
@@ -335,6 +377,9 @@ else:
             f.write('<h2>Possible SQL Errors</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         if notfound1:
             print("[-]No results found\n")
@@ -343,6 +388,9 @@ else:
             f.write('<h2>Possible SQL Errors</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         time.sleep(5)
 
@@ -352,7 +400,7 @@ else:
         response = requests.get(requesturl, headers=headers, timeout=5)
         response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
-        notfound1 = re.search('抱歉没有找到', response1.text)
+        notfound1 = re.search('抱歉没有找到', str(response1.content.decode(response1.encoding).encode('utf-8')))
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
         if notfound:
             print("[-]No results found\n")
@@ -363,6 +411,9 @@ else:
             f.write('<h2>Possible Publicly Exposed Documents</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         if notfound1:
             print("[-]No results found\n")
@@ -371,6 +422,9 @@ else:
             f.write('<h2>Possible Publicly Exposed Documents</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
 
         time.sleep(5)
 
@@ -381,7 +435,7 @@ else:
         response = requests.get(requesturl, headers=headers, timeout=5)
         response1 = requests.get(requesturl1, headers=headers, timeout=5)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
-        notfound1 = re.search('抱歉没有找到', response1.text)
+        notfound1 = re.search('抱歉没有找到', str(response1.content.decode(response1.encoding).encode('utf-8')))
         captcha = re.search(',\ssolving the above CAPTCHA will let you continue\s', response.text)
         if notfound:
             print("[-]No results found\n")
@@ -392,6 +446,10 @@ else:
             f.write('<h2>phpinfo()</h2>')
             f.write('<a href="' + requesturl + '">Click Here</a>')
             f.write("<br>")
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
+
             # f.close()
 
         if notfound1:
@@ -401,7 +459,11 @@ else:
             f.write('<h2>phpinfo()</h2>')
             f.write('<a href="' + requesturl1 + '">Click Here</a>')
             f.write("<br>")
-            f.close()
+            f1.write(requesturl1 + "\n")
+
+            f1.flush()
+        f.close()
+        f1.close()
 
 
     process_google()
