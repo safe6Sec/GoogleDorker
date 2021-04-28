@@ -95,7 +95,7 @@ else:
         }
 
         requesturl = 'https://www.google.com/search?q=site:' + url + '+intitle:index.of&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+intitle:index.of&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+intitle:index.of'
         response = requests.get(requesturl)
         response1 = requests.get(requesturl1, headers=headers)
         # print(requesturl1)
@@ -320,7 +320,7 @@ else:
 
         print("[#]Checking for SQL errors")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+intext:%22sql+syntax+near%22+|+intext:%22syntax+error+has+occurred%22+|+intext:%22incorrect+syntax+near%22+|+intext:%22unexpected+end+of+SQL+command%22+|+intext:%22Warning:+mysql_connect()%22+|+intext:%22Warning:+mysql_query()%22+|+intext:%22Warning:+pg_connect()%22&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+intext:%22sql+syntax+near%22+|+intext:%22syntax+error+has+occurred%22+'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+intext:%22sql+syntax+near%22+|+intext:%22syntax+error+has+occurred%22'
         response = requests.get(requesturl)
         response1 = requests.get(requesturl1, headers=headers)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
@@ -348,7 +348,7 @@ else:
 
         print("[#]Checking for Publicly exposed documents ")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:doc+|+ext:docx+|+ext:odt+|+ext:pdf+|+ext:rtf+|+ext:sxw+|+ext:psw+|+ext:ppt+|+ext:pptx+|+ext:pps+|+ext:csv&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:doc+|+filetype:docx+|+filetype:odt+|+filetype:pdf+|+filetype:rtf+|+filetype:sxw+|+filetype:psw+|+filetype:ppt+|+filetype:pptx+|+filetype:pps+|+filetype:csv&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+filetype:doc+|+filetype:docx+|+filetype:pdf+|+filetype:ppt+|+filetype:pptx+|+filetype:csv'
         response = requests.get(requesturl)
         response1 = requests.get(requesturl1, headers=headers)
         notfound = re.search('\s-\sdid not match any documents.', response.text)
@@ -376,7 +376,7 @@ else:
 
         print("[#]Checking for phpinfo() ")
         requesturl = 'https://www.google.com/search?q=site:' + url + '+ext:php+intitle:phpinfo+%22published+by+the+PHP+Group%22&hl=en'
-        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+intitle:phpinfo+%22published+by+the+PHP+Group%22&hl=en'
+        requesturl1 = 'https://www.baidu.com/s?wd=site:' + url + '+intitle:phpinfo+%22published+by+the+PHP+Group%22'
 
         response = requests.get(requesturl)
         response1 = requests.get(requesturl1, headers=headers)
